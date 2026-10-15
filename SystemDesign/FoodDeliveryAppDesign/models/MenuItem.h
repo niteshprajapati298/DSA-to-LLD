@@ -1,5 +1,8 @@
+#ifndef MENUITEM_H
+#define MENUITEM_H
 #include<iostream>
 using namespace std;
+#include<string>
 
 
 
@@ -36,5 +39,4 @@ class MenuItem {
         this->code = code;
     }
 };
-int main(){
-}
+#endif
