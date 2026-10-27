@@ -3,12 +3,13 @@
 #include <iostream>
 using namespace std;
 #include <vector>
-#include "Order.h"
+#include "../models/Order.h"
 class OrderManager
 {
     static OrderManager *instance;
     vector<Order *> orders;
 
+public:
     static OrderManager *getInstance()
     {
         if (instance == nullptr)
@@ -17,7 +18,7 @@ class OrderManager
         }
         return instance;
     }
-    public:
+
     void addOrder(Order *order)
     {
         orders.push_back(order);

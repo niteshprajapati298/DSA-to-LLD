@@ -6,7 +6,7 @@ using namespace std;
 #include "MenuItem.h"
 #include "Restaurant.h"
 #include "User.h"
-#include "PaymentStrategy.h"
+#include "../strategies/PaymentStrategy.h"
 class Order
 {
     static int nextOrderId;
@@ -28,7 +28,7 @@ public:
         scheduled = "";
         this->orderId = ++nextOrderId;
     }
-    ~Order()
+    virtual ~Order()
     {
         delete paymentStrategy;
         cout << "Order " << orderId << " destroyed." << endl;

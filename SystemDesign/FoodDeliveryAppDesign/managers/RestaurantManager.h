@@ -1,6 +1,10 @@
 #ifndef RESTAURANTMANAGER_H
 #define RESTAURANTMANAGER_H
 
+#include <algorithm>
+#include <cctype>
+#include <string>
+#include <vector>
 #include "../models/Restaurant.h"
 
 class RestaurantManager {
@@ -17,15 +21,20 @@ public:
     }
 
     void addRestaurant(Restaurant* restaurant) {
-        restaurants.push_back(restaurant);
+        if (restaurant != nullptr) {
+            restaurants.push_back(restaurant);
+        }
     }
     vector<Restaurant*> searchByLocation(const string& location) {
         vector<Restaurant*> result;
-        transform(location.begin(), location.end(), location.begin(), ::tolower);
+        string normalizedLocation = location;
+        transform(normalizedLocation.begin(), normalizedLocation.end(), normalizedLocation.begin(),
+                  [](unsigned char character) { return static_cast<char>(tolower(character)); });
         for (auto r : restaurants) {
             string restaurantLocation = r->getLocation();
-            transform(restaurantLocation.begin(), restaurantLocation.end(), restaurantLocation.begin(), ::tolower);
-            if (restaurantLocation == location) {
+            transform(restaurantLocation.begin(), restaurantLocation.end(), restaurantLocation.begin(),
+                      [](unsigned char character) { return static_cast<char>(tolower(character)); });
+            if (restaurantLocation == normalizedLocation) {
                 result.push_back(r);
             }
         }

@@ -1,10 +1,9 @@
 #ifndef NOWORDERFACTORY_H
 #define NOWORDERFACTORY_H
 #include "OrderFactory.h"
-#include "PickupOrder.h"
-#include "DeliveryOrder.h"
-#include "Order.h"
-#include "PaymentStrategy.h"
+#include "../models/PickupOrder.h"
+#include "../models/DeliveryOrder.h"
+#include "../strategies/PaymentStrategy.h"
 class NowOrderFactory : public OrderFactory {
 public:
     Order* createOrder(User *user ,Cart *cart , Restaurant *restaurant , const vector<MenuItem>& items , PaymentStrategy *paymentStrategy , const string &orderType) override {

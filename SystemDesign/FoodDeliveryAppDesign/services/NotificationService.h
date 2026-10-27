@@ -1,7 +1,7 @@
 #ifndef NOTIFICATION_SERVICE_H
 #define NOTIFICATION_SERVICE_H
 #include <iostream>
-#include "Order.h"
+#include "../models/Order.h"
 class NotificationService
 {
 public:

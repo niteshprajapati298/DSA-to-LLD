@@ -2,9 +2,9 @@
 #define SCHEDULED_ORDER_FACTORY_H
 
 #include "OrderFactory.h"
-#include "Cart.h"
-#include "PickupOrder.h"
-#include "DeliveryOrder.h"
+#include "../models/Cart.h"
+#include "../models/PickupOrder.h"
+#include "../models/DeliveryOrder.h"
 class ScheduledOrderFactory : public OrderFactory
 {
 public:
@@ -14,11 +14,13 @@ public:
         if (orderType == "Pickup")
         {
             auto pickupOrder = new PickupOrder();
+            pickupOrder->setRestaurantAddress(restaurant->getLocation());
             order = pickupOrder;
         }
         else if (orderType == "Delivery")
         {
             auto deliveryOrder = new DeliveryOrder();
+            deliveryOrder->setUserAddress(user->getAddress());
             order = deliveryOrder;
         }
         else
@@ -32,7 +34,7 @@ public:
         order->setRestaurant(restaurant);
         order->setScheduled("Later");
         order->setItems(items);
-
+        return order;
     }
 };
 #endif
