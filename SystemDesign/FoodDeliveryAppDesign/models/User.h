@@ -17,8 +17,18 @@ class User {
         this->address = address;
         this->cart = new Cart();
     }
-    
-
+    int getUserId() const {
+        return userId;
+    }
+    string getName() const {
+        return name;
+    }
+    string getAddress() const {
+        return address;
+    }
+    Cart* getCart() const {
+        return cart;
+    }
 };
 
 int User::nextUserId = 0;

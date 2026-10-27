@@ -15,7 +15,7 @@ public:
     {
         restaurant = nullptr;
     }
-    void addItem(MenuItem item, Restaurant *restaurant)
+    void addItem(const MenuItem &item, Restaurant *restaurant)
     {
         if (this->restaurant == nullptr)
         {
